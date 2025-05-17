@@ -2,15 +2,15 @@ local sides = require("sides")
 local component = require("component")
 local term = require("term")
 
-local utility = require("utility")
+local LiquidTransposer = require("liquidTransposer")
 
 local function canDoCycle(controller)
     return controller.getWorkMaxProgress() - controller.getWorkProgress() > 30 * 20
 end
 
 -- init variables
-local plasmaTs = utility.liquidTransposer:new("Plasma TS", component.proxy("id"), sides.down, sides.top)
-local coolantTs = utility.liquidTransposer:new("Coolant TS", component.proxy("id"), sides.down, sides.top)
+local plasmaTs = LiquidTransposer:new("Plasma TS", component.proxy("id"), sides.down, sides.top)
+local coolantTs = LiquidTransposer:new("Coolant TS", component.proxy("id"), sides.down, sides.top)
 local controller = component.gt_machine
 
 -- main loop
@@ -18,13 +18,17 @@ while true do
     term.clear()
     if controller.isMachineActive() then
         if canDoCycle(controller) then
+            print("Started work on tick: " .. tostring(controller.getWorkProgress()))
+
+            -- TODO: sleep for 5-10 ticks less than needed and the wait by checking tank level directly, else cant fit 4 cycles in 120s
+
             print("Adding plasma...")
-            plasmaTs.addFluid(100)
+            plasmaTs:addFluid(100)
             ---@diagnostic disable-next-line undefined-field
             os.sleep(10)
 
             print("Adding coolant...")
-            coolantTs.addFluid(2000)
+            coolantTs:addFluid(2000)
             ---@diagnostic disable-next-line undefined-field
             os.sleep(20)
         else

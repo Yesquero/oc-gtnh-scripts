@@ -1,0 +1,15 @@
+canProvideEnergy:    false
+hasTag:    false
+maxDamage:    0
+fluid:    table: 0x7828b5671580
+----amount:    0
+maxSize:    64
+tier:    2147483647
+capacity:    0
+name:    gregtech:gt.metaitem.01
+charge:    0.0
+transferLimit:    0.0
+size:    1
+maxCharge:    0.0
+damage:    24533
+label:    Endereye Lens
