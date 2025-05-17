@@ -1,0 +1,73 @@
+###### GT MACHINE ######
+
+getOwnerName    function():string; Returns the name of this block's owner
+getEUCapacity    function():number --  Returns the amount of electricity containable in this Block, in EU units!
+getOutputVoltage    function():number --  Gets the Output in EU/p.
+getEUCapacityString    function():number --  Returns the amount of electricity containable in this Block, in EU units! (As a string for HUGE amounts.)
+getStoredSteam    function():number --  Returns the amount of Steam contained in this Block, in EU units!
+type    gt_machine
+getEUOutputAverage    function():number; Returns the average EU output of this block
+getSteamMaxStored    function():number; Returns the max steam that can be stored in this block
+getSteamStored    function():number; Returns the steam stored in this block
+getAverageElectricInput    function():number -- Returns the amount of Electricity, accepted by this Block the last 5 ticks as Average.
+getWorkProgress    function():number; Returns the current progress of this block
+hasWork    function():boolean; Returns true if the machine currently has work to do
+isMachineActive    function():boolean; Returns whether the machine is currently active
+setWorkAllowed    function(work:boolean); Sets whether this block is currently allowed to work
+getWorkMaxProgress    function():number; Returns the max progress of this block
+getInputVoltage    function():number -- Gets the maximum Input in EU/p.
+getEUInputAverage    function():number; Returns the average EU input of this block
+getEUStored    function():number; Returns the EU stored in this block
+getEUMaxStored    function():number; Returns the max EU that can be stored in this block
+getStoredEU    function():number --  Returns the amount of electricity contained in this Block, in EU units!
+getCoordinates    function():table; Returns machine coordinates
+getAverageElectricOutput    function():number -- Returns the amount of Electricity, outputted by this Block the last 5 ticks as Average.
+getSteamCapacity    function():number --  Returns the amount of Steam containable in this Block, in EU units!
+getStoredEUString    function():string --  Returns the amount of electricity contained in this Block, in EU units! (As a string for HUGE amounts.)
+isWorkAllowed    function():boolean; Returns whether this block is currently allowed to work
+getOutputAmperage    function():number -- Gets the amount of Energy Packets per tick.
+getSensorInformation    function():table; Returns sensor information about this block
+getName    function():string; Returns the machine's name
+address    6af6dfbb-976b-4dc7-8e56-6d25fea520f5
+
+###### TRANSPOSER ######
+
+getTankCapacity    function(side:number [, tank:number]):number -- Get the capacity of the specified tank on the specified side.
+getFluidInTank    function(side:number [, tank:number]):table -- Get a description of the fluid in the the specified tank on the specified side.
+compareStacks    function(side:number, slotA:number, slotB:number[, checkNBT:boolean=false]):boolean -- Get whether the items in the two specified slots of the inventory on the specified side of the device are of the same type.
+getStackInSlot    function(side:number, slot:number):table -- Get a description of the stack in the inventory on the specified side of the device.
+areStacksEquivalent    function(side:number, slotA:number, slotB:number):boolean -- Get whether the items in the two specified slots of the inventory on the specified side of the device are equivalent (have shared OreDictionary IDs).
+address    94081e1b-35c4-4be9-b43f-9e984a855810
+getFluidInContainerInSlot    function(side:number, slot:number):table -- Get a description of the fluid in the fluid container in the specified slot of the inventory on the specified side of the device.
+transferItem    function(sourceSide:number, sinkSide:number[, count:number[, sourceSlot:number[, sinkSlot:number]]]):number -- Transfer some items between two inventories.
+type    transposer
+getInventoryName    function(side:number):string -- Get the the name of the inventory on the specified side of the device.
+store    function(side:number, slot:number, dbAddress:string, dbSlot:number):boolean -- Store an item stack description in the specified slot of the database with the specified address.
+getSlotStackSize    function(side:number, slot:number):number -- Get number of items in the specified slot of the inventory on the specified side of the device.
+transferFluid    function(sourceSide:number, sinkSide:number[, count:number [, sourceTank:number]]):boolean, number -- Transfer some fluid between two tanks. Returns operation result and filled amount
+getContainerCapacityInSlot    function(side:number, slot:number):number -- Get the capacity of the fluid container in the specified slot of the inventory on the specified side of the device.
+getInventorySize    function(side:number):number -- Get the number of slots in the inventory on the specified side of the device.
+setStackDisplayName    function(side:number, slot:number, label:string):boolean -- Change the display name of the stack in the inventory on the specified side of the device.
+getAllStacks    function(side:number):userdata -- Get a description of all stacks in the inventory on the specified side of the device.
+getTankLevel    function(side:number [, tank:number]):number -- Get the amount of fluid in the specified tank on the specified side.
+compareStackToDatabase    function(side:number, slot:number, dbAddress:string, dbSlot:number[, checkNBT:boolean=false]):boolean -- Compare an item in the specified slot in the inventory on the specified side with one in the database with the specified address.
+transferFluidFromContainerToTank    function(inventorySide:number, inventorySlot:number, tankSide:number [, count:number [, outputSide:number[, outputSlot:number]]]):boolean, number -- Transfer some fluid from the container to the tank. Returns operation result and filled amount
+getContainerLevelInSlot    function(side:number, slot:number):number -- Get the capacity the fluid container in the specified slot of the inventory on the specified side of the device.
+transferFluidFromTankToContainer    function(tankSide:number, inventorySide:number, inventorySlot:number [, count:number [, sourceTank:number [, outputSide:number[, outputSlot:number]]]]):boolean, number -- Transfer some fluid from the tank to the container. Returns operation result and filled amount
+getSlotMaxStackSize    function(side:number, slot:number):number -- Get the maximum number of items in the specified slot of the inventory on the specified side of the device.
+transferFluidBetweenContainers    function(sourceSide:number, sourceSlot:number, sinkSide:number, sinkSlot:number[, count:number [, sourceOutputSide:number[, sinkOutputSide:number[, sourceOutputSlot:number[, sinkOutputSlot:number]]]]]):boolean, number -- Transfer some fluid from a container to another container. Returns operation result and filled amount
+getTankCount    function(side:number):number -- Get the number of tanks available on the specified side.
+
+###### REDSTONE IO ######
+
+setBundledOutput    function([side:number[, color:number,]] value:number or table):number or table --  Fewer params to assign set of outputs. Returns previous values
+setWakeThreshold    function(threshold:number):number -- Set the wake-up threshold.
+getBundledOutput    function([side:number[, color:number]]):number or table -- Fewer params returns set of outputs
+type    redstone
+address    144dc296-b036-4f50-b7e9-8e94e9c87d71
+getComparatorInput    function(side:number):number -- Get the comparator input on the specified side.
+setOutput    function([side:number, ]value:number or table):number or table --  Set the redstone output (all sides, or optionally on the specified side). Returns previous values
+getBundledInput    function([side:number[, color:number]]):number or table -- Fewer params returns set of inputs
+getInput    function([side:number]):number or table -- Get the redstone input (all sides, or optionally on the specified side)
+getOutput    function([side:number]):number or table -- Get the redstone output (all sides, or optionally on the specified side)
+getWakeThreshold    function():number -- Get the current wake-up threshold.
