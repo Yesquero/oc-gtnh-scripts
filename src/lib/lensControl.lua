@@ -84,7 +84,7 @@ function LensControl:isLastLens()
 end
 
 -- Detect maximum consequtive available lenses
-function LensControl:lensInit()
+function LensControl:lensInit() -- TODO: empty lens sink before initialising
     for item in self.itemTransposer:sourceItemsIt() do
         if self.lensLookup[item.label] ~= nil then
             self.lensOrder[self.lensLookup[item.label]].available = true
